@@ -1,5 +1,5 @@
+import { LayoutProps } from '@/types/common';
 import Link from 'next/link';
-import { LayoutProps } from 'types';
 
 export function MainLayout({ children }: LayoutProps) {
 	return (

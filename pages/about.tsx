@@ -1,4 +1,5 @@
 import Header from '@/components/common/Header';
+import { MainLayout } from '@/components/layout';
 import { useRouter } from 'next/router';
 // import dynamic from 'next/dynamic';
 import React from 'react';
@@ -9,7 +10,7 @@ import React from 'react';
 
 export interface IAboutPageProps {}
 
-function AboutPage(props: IAboutPageProps) {
+export default function AboutPage(props: IAboutPageProps) {
 	const router = useRouter();
 	const [postList, setPostList] = React.useState([]);
 	const page = router.query?.page;
@@ -40,7 +41,7 @@ function AboutPage(props: IAboutPageProps) {
 	};
 
 	return (
-		<div>
+		<React.Fragment>
 			<h1>About Page</h1>
 			<Header />
 			<ul className="post-list">
@@ -49,11 +50,11 @@ function AboutPage(props: IAboutPageProps) {
 				))}
 			</ul>
 			<button onClick={handleNextClick}>Next page</button>
-		</div>
+		</React.Fragment>
 	);
 }
 
-export default AboutPage;
+AboutPage.Layout = MainLayout;
 
 export function getStaticProps() {
 	console.log('get static props run!');

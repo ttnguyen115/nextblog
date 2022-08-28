@@ -26,7 +26,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: posts.map((post: any) => ({ params: { postId: post.id } })),
-    fallback: false,
+    fallback: "blocking",
   }
 }
 
@@ -40,5 +40,6 @@ export const getStaticProps: GetStaticProps<PostPageProps> = async (context: Get
     props: {
       post,
     },
+    revalidate: 5,
   }
 }

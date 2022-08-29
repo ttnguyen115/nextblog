@@ -9,6 +9,7 @@ type IUseAuth = {
 	error: any;
 	login: () => void;
 	logout: () => void;
+	firstLoading: boolean;
 };
 
 export function useAuth(options?: Partial<PublicConfiguration>): IUseAuth {
@@ -21,6 +22,8 @@ export function useAuth(options?: Partial<PublicConfiguration>): IUseAuth {
 		revalidateOnFocus: false,
 		...options,
 	});
+
+	const firstLoading = profile === undefined && error === undefined;
 
 	async function login() {
 		await authApi.login({
@@ -40,5 +43,6 @@ export function useAuth(options?: Partial<PublicConfiguration>): IUseAuth {
 		error,
 		login,
 		logout,
+		firstLoading,
 	};
 }

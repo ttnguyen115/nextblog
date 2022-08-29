@@ -1,5 +1,5 @@
 import Header from '@/components/common/Header';
-import { MainLayout } from '@/components/layout';
+import { AdminLayout } from '@/components/layout';
 import { useRouter } from 'next/router';
 // import dynamic from 'next/dynamic';
 import React from 'react';
@@ -54,7 +54,7 @@ export default function AboutPage(props: IAboutPageProps) {
 	);
 }
 
-AboutPage.Layout = MainLayout;
+AboutPage.Layout = AdminLayout;
 
 export function getStaticProps() {
 	console.log('get static props run!');

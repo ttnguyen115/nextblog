@@ -1,5 +1,6 @@
 import Header from '@/components/common/Header';
 import { AdminLayout } from '@/components/layout';
+import { Box, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 // import dynamic from 'next/dynamic';
 import React from 'react';
@@ -41,8 +42,10 @@ export default function AboutPage(props: IAboutPageProps) {
 	};
 
 	return (
-		<React.Fragment>
-			<h1>About Page</h1>
+		<Box>
+			<Typography component="h1" variant="h3" color="primary.main">
+				About Page
+			</Typography>
 			<Header />
 			<ul className="post-list">
 				{postList.map((post: any) => (
@@ -50,7 +53,7 @@ export default function AboutPage(props: IAboutPageProps) {
 				))}
 			</ul>
 			<button onClick={handleNextClick}>Next page</button>
-		</React.Fragment>
+		</Box>
 	);
 }
 

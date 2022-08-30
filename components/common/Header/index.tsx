@@ -1,11 +1,14 @@
-import { Box } from '@mui/material';
+import React from 'react';
+import { DesktopHeader } from './DesktopHeader';
+import { MobileHeader } from './MobileHeader';
 
 export interface HeaderProps {}
 
 export function Header(props: HeaderProps) {
 	return (
-		<Box component="header" py={2} textAlign="center">
-			Header
-		</Box>
+		<React.Fragment>
+			<DesktopHeader />
+			<MobileHeader />
+		</React.Fragment>
 	);
 }

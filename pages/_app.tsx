@@ -1,6 +1,7 @@
 import axiosClient from '@/app/axiosClient';
 import { EmptyLayout } from '@/components/layout';
 import { createEmotionCache, theme } from '@/lib/mui';
+import '@/lib/remark-prism/prism.css';
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';

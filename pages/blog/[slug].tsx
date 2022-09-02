@@ -1,12 +1,17 @@
 import { Post } from '@/types';
 import { getPostList } from '@/utils';
-import { Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import Script from 'next/script';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeDocument from 'rehype-document';
 import rehypeFormat from 'rehype-format';
+import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import remarkParse from 'remark-parse/lib';
+import remarkPrism from 'remark-prism';
 import remarkRehype from 'remark-rehype';
+import remarkToc from 'remark-toc';
 import { unified } from 'unified';
 
 export interface BlogPageProps {
@@ -17,13 +22,16 @@ export default function BlogPage({ post }: BlogPageProps) {
 	if (!post) return;
 
 	return (
-		<Container>
-			<h1>Post Detail Page</h1>
-			<p>{post.title}</p>
-			<p>{post.author?.name}</p>
-			<p>{post.description}</p>
-			<div dangerouslySetInnerHTML={{ __html: post.htmlContent || '' }} />
-		</Container>
+		<Box>
+			<Container>
+				<h1>Post Detail Page</h1>
+				<p>{post.title}</p>
+				<p>{post.author?.name}</p>
+				<p>{post.description}</p>
+				<div dangerouslySetInnerHTML={{ __html: post.htmlContent || '' }} />
+			</Container>
+			<Script src="@/lib/remark-prism/prism.js" strategy="afterInteractive" />
+		</Box>
 	);
 }
 
@@ -49,7 +57,11 @@ export const getStaticProps: GetStaticProps<BlogPageProps> = async (
 	// convert md to html
 	const file = await unified()
 		.use(remarkParse)
+		.use(remarkToc, { heading: 'Agenda.*' })
+		.use(remarkPrism)
 		.use(remarkRehype)
+		.use(rehypeSlug)
+		.use(rehypeAutolinkHeadings, { behavior: 'wrap' })
 		.use(rehypeDocument, { title: post.title })
 		.use(rehypeFormat)
 		.use(rehypeStringify)

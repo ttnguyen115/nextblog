@@ -7,7 +7,7 @@ export interface PostCardProps {
 }
 
 export function PostCard({ post }: PostCardProps) {
-	//if (!post) return null;
+	if (!post) return null;
 
 	return (
 		<Card>

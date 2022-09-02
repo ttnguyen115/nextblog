@@ -65,6 +65,26 @@ export let theme = createTheme({
 				},
 			],
 		},
+		MuiChip: {
+			styleOverrides: {
+				root: {
+					paddingInline: 4,
+				},
+			},
+			variants: [
+				{
+					props: {
+						color: 'secondary',
+					},
+					style: {
+						fontWeight: 'bold',
+						backgroundColor: '#142850',
+						fontsize: 16,
+						color: 'white',
+					},
+				},
+			],
+		},
 	},
 });
 

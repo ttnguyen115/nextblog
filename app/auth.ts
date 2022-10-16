@@ -1,4 +1,4 @@
-import { LoginPayload } from '../types';
+import { LoginPayload } from '@/types';
 import axiosClient from './axiosClient';
 
 export const authApi = {

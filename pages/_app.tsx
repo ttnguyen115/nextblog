@@ -2,12 +2,12 @@ import axiosClient from '@/app/axiosClient';
 import { EmptyLayout } from '@/components/layout';
 import { createEmotionCache, theme } from '@/lib/mui';
 import '@/lib/remark-prism/prism.css';
+import { AppPropsWithLayout } from '@/types';
 import { CacheProvider } from '@emotion/react';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { SWRConfig } from 'swr';
 import '../styles/globals.css';
-import { AppPropsWithLayout } from '../types';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();

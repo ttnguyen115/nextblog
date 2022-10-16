@@ -24,6 +24,7 @@
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.37.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-document": "^6.1.0",
     "rehype-format": "^4.0.1",

@@ -3,8 +3,8 @@ import { FeaturedWorks } from '@/components/FeaturedWorks';
 import { HeroSection } from '@/components/HeroSection';
 import { MainLayout } from '@/components/layout';
 import { RecentPosts } from '@/components/RecentPosts';
-import { Box } from '@mui/material';
-import { NextPageWithLayout } from '../types';
+import { NextPageWithLayout } from '@/types';
+import { Box } from '@mui/system';
 
 const Home: NextPageWithLayout = () => {
 	return (

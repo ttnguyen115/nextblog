@@ -1,5 +1,7 @@
+import { LoginForm } from '@/components/auth';
+import { useAuth } from '@/hooks';
+import { LoginPayload } from '@/types';
 import { useRouter } from 'next/router';
-import { useAuth } from '../hooks';
 
 export default function LoginPage() {
 	const router = useRouter();
@@ -7,10 +9,9 @@ export default function LoginPage() {
 		revalidateOnMount: false,
 	});
 
-	const handleLogin = async () => {
+	const handleLoginSubmit = async (payload: LoginPayload) => {
 		try {
-			await login();
-			router.push('/about');
+			await login(payload);
 		} catch (error) {
 			console.log('Failed to login!', error);
 		}
@@ -30,9 +31,9 @@ export default function LoginPage() {
 
 			<p>Profile: {JSON.stringify(profile || {}, null, 4)}</p>
 
-			<button onClick={handleLogin}>Login</button>
 			<button onClick={handleLogout}>Logout</button>
 			<button onClick={() => router.push('/about')}>Go to about</button>
+			<LoginForm onSubmit={handleLoginSubmit} />
 		</div>
 	);
 }

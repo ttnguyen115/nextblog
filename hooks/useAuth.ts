@@ -1,13 +1,14 @@
+import { authApi } from '@/app';
+import { LoginPayload } from '@/types';
 import useSWR from 'swr';
 import { PublicConfiguration } from 'swr/dist/types';
-import { authApi } from '../app';
 
 const MILLISECOND_PER_HOUR = 60 * 60 * 1000;
 
 type IUseAuth = {
 	profile: any;
 	error: any;
-	login: () => void;
+	login: (payload: LoginPayload) => void;
 	logout: () => void;
 	firstLoading: boolean;
 };
@@ -25,11 +26,8 @@ export function useAuth(options?: Partial<PublicConfiguration>): IUseAuth {
 
 	const firstLoading = profile === undefined && error === undefined;
 
-	async function login() {
-		await authApi.login({
-			username: 'test',
-			password: '123123',
-		});
+	async function login(payload: LoginPayload) {
+		await authApi.login(payload);
 		await mutate();
 	}
 

@@ -9,10 +9,10 @@ export type InputFieldProps = TextFieldProps & {
 export function InputField({
 	name,
 	label,
-  control,
-  onChange: externalOnChange,
-  onBlur: externalOnBlur,
-  inputRef: externalInputRef,
+	control,
+	onChange: externalOnChange,
+	onBlur: externalOnBlur,
+	inputRef: externalInputRef,
 	...props
 }: InputFieldProps) {
 	const {
@@ -28,6 +28,8 @@ export function InputField({
 			onChange={onChange}
 			onBlur={onBlur}
 			inputRef={ref}
+			error={!!error}
+			helperText={error?.message}
 			size="small"
 			margin="normal"
 			fullWidth
